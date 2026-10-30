@@ -185,10 +185,10 @@ export class Chat {
   }
 
   /** Recent lines as "Name: text", the context the assistant works from. */
-  context(channel: string, limit = 30, names: (id: string) => string = (x) => x): string[] {
+  context(channel: string, limit = 30, names: (id: string) => string = (x) => x, people = false): string[] {
     return this.store
       .recent(channel, limit)
-      .filter((m) => !m.deleted && m.body)
+      .filter((m) => !m.deleted && m.body && (!people || m.author !== assistant.id))
       .map((m) => `${names(m.author)}: ${m.body}`);
   }
 }

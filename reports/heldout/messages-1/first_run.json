@@ -1,0 +1,1009 @@
+{
+  "summary": {
+    "set": "messages-1",
+    "status": "heldout",
+    "messages": 60,
+    "kindCorrect": 40,
+    "unwantedOffers": 2,
+    "missedOffers": 18,
+    "wrongKind": 0,
+    "detailsCorrect": 40,
+    "detailsChecked": 45,
+    "byKind": {
+      "meeting": {
+        "expected": 25,
+        "correct": 13
+      },
+      "task": {
+        "expected": 15,
+        "correct": 9
+      },
+      "none": {
+        "expected": 20,
+        "correct": 18
+      }
+    }
+  },
+  "rows": [
+    {
+      "id": "m01",
+      "text": "Guten Morgen zusammen! Noch zwei Tage bis zum Launch, wir schaffen das",
+      "expected": {
+        "kind": "none"
+      },
+      "got": {
+        "kind": "none"
+      },
+      "checks": {
+        "kind": true
+      }
+    },
+    {
+      "id": "m02",
+      "text": "Maya, do you have 30 min tomorrow afternoon to go through the icon set?",
+      "expected": {
+        "kind": "meeting",
+        "day": "2026-11-05",
+        "durationMin": 30
+      },
+      "got": {
+        "kind": "none"
+      },
+      "checks": {
+        "kind": false
+      }
+    },
+    {
+      "id": "m03",
+      "text": "@jonas could you upload the final screenshots to the press folder by tomorrow?",
+      "expected": {
+        "kind": "task",
+        "assignee": "jonas",
+        "due": "2026-11-05"
+      },
+      "got": {
+        "kind": "task",
+        "assignee": "jonas",
+        "due": "2026-11-05",
+        "confidence": 0.85
+      },
+      "checks": {
+        "kind": true,
+        "assignee": true,
+        "due": true
+      }
+    },
+    {
+      "id": "m04",
+      "text": "Lass uns morgen um 11 Uhr alle kurz zusammen den Launch-Ablauf durchgehen.",
+      "expected": {
+        "kind": "meeting",
+        "day": "2026-11-05",
+        "after": "11:00"
+      },
+      "got": {
+        "kind": "none"
+      },
+      "checks": {
+        "kind": false
+      }
+    },
+    {
+      "id": "m05",
+      "text": "Das Meeting gestern war echt produktiv, danke euch allen!",
+      "expected": {
+        "kind": "none"
+      },
+      "got": {
+        "kind": "none"
+      },
+      "checks": {
+        "kind": true
+      }
+    },
+    {
+      "id": "m06",
+      "text": "Hi Lena, can we do a call tomorrow at 9am my time? Need to walk you through the APAC pricing",
+      "expected": {
+        "kind": "meeting",
+        "day": "2026-11-05",
+        "after": "09:00"
+      },
+      "got": {
+        "kind": "meeting",
+        "label": "Thu 5 Nov, at 09:00",
+        "durationMin": 30,
+        "confidence": 0.9
+      },
+      "checks": {
+        "kind": true,
+        "day": true,
+        "after": true
+      }
+    },
+    {
+      "id": "m07",
+      "text": "@jonas kannst du bitte bis Freitag die Preisliste im Shop prüfen?",
+      "expected": {
+        "kind": "task",
+        "assignee": "jonas",
+        "due": "2026-11-06"
+      },
+      "got": {
+        "kind": "task",
+        "assignee": "jonas",
+        "due": "2026-11-06",
+        "confidence": 0.85
+      },
+      "checks": {
+        "kind": true,
+        "assignee": true,
+        "due": true
+      }
+    },
+    {
+      "id": "m08",
+      "text": "when's the standup tomorrow again? 9 or 9:30?",
+      "expected": {
+        "kind": "none"
+      },
+      "got": {
+        "kind": "meeting",
+        "label": "Thu 5 Nov, at 09:30",
+        "durationMin": 30,
+        "confidence": 0.75
+      },
+      "checks": {
+        "kind": false
+      }
+    },
+    {
+      "id": "m09",
+      "text": "up way too early lol. can we sync today at 2pm (my time)?",
+      "expected": {
+        "kind": "meeting",
+        "day": "2026-11-04",
+        "after": "14:00"
+      },
+      "got": {
+        "kind": "meeting",
+        "label": "Wed 4 Nov, at 14:00",
+        "durationMin": 30,
+        "confidence": 0.9
+      },
+      "checks": {
+        "kind": true,
+        "day": true,
+        "after": true
+      }
+    },
+    {
+      "id": "m10",
+      "text": "Guten Morgen! Können wir heute um 14 Uhr kurz die Checkliste durchgehen?",
+      "expected": {
+        "kind": "meeting",
+        "day": "2026-11-04",
+        "after": "14:00"
+      },
+      "got": {
+        "kind": "none"
+      },
+      "checks": {
+        "kind": false
+      }
+    },
+    {
+      "id": "m11",
+      "text": "Could you send me the final launch timeline by Monday?",
+      "expected": {
+        "kind": "task",
+        "assignee": "lena",
+        "due": "2026-11-09"
+      },
+      "got": {
+        "kind": "task",
+        "assignee": "lena",
+        "due": "2026-11-09",
+        "confidence": 0.85
+      },
+      "checks": {
+        "kind": true,
+        "assignee": true,
+        "due": true
+      }
+    },
+    {
+      "id": "m12",
+      "text": "Wo ist nochmal der Link für den Call um 15 Uhr?",
+      "expected": {
+        "kind": "none"
+      },
+      "got": {
+        "kind": "none"
+      },
+      "checks": {
+        "kind": true
+      }
+    },
+    {
+      "id": "m13",
+      "text": "The call yesterday was super helpful. Can we do a follow-up Thursday at 4pm? An hour should be enough",
+      "expected": {
+        "kind": "meeting",
+        "day": "2026-11-05",
+        "after": "16:00",
+        "durationMin": 60
+      },
+      "got": {
+        "kind": "none"
+      },
+      "checks": {
+        "kind": false
+      }
+    },
+    {
+      "id": "m14",
+      "text": "Ich kümmere mich heute noch um die Social-Media-Posts.",
+      "expected": {
+        "kind": "task",
+        "assignee": "jonas",
+        "due": "2026-11-04"
+      },
+      "got": {
+        "kind": "none"
+      },
+      "checks": {
+        "kind": false
+      }
+    },
+    {
+      "id": "m15",
+      "text": "Kann jemand die Pressemitteilung nochmal gegenlesen?",
+      "expected": {
+        "kind": "none"
+      },
+      "got": {
+        "kind": "none"
+      },
+      "checks": {
+        "kind": true
+      }
+    },
+    {
+      "id": "m16",
+      "text": "Arif, could we talk next Monday before noon? 45 min should do it",
+      "expected": {
+        "kind": "meeting",
+        "day": "2026-11-09",
+        "durationMin": 45
+      },
+      "got": {
+        "kind": "none"
+      },
+      "checks": {
+        "kind": false
+      }
+    },
+    {
+      "id": "m17",
+      "text": "Können wir am Freitag nach dem Launch eine halbe Stunde Retro machen? So gegen 16 Uhr?",
+      "expected": {
+        "kind": "meeting",
+        "day": "2026-11-06",
+        "after": "16:00",
+        "durationMin": 30
+      },
+      "got": {
+        "kind": "none"
+      },
+      "checks": {
+        "kind": false
+      }
+    },
+    {
+      "id": "m18",
+      "text": "could you check the landing page copy before Friday? some typos in the hero section",
+      "expected": {
+        "kind": "none"
+      },
+      "got": {
+        "kind": "none"
+      },
+      "checks": {
+        "kind": true
+      }
+    },
+    {
+      "id": "m19",
+      "text": "I'll send you the revised mockups by end of day",
+      "expected": {
+        "kind": "task",
+        "assignee": "maya",
+        "due": "2026-11-04"
+      },
+      "got": {
+        "kind": "task",
+        "assignee": "maya",
+        "due": null,
+        "confidence": 0.65
+      },
+      "checks": {
+        "kind": true,
+        "assignee": true,
+        "due": false
+      }
+    },
+    {
+      "id": "m20",
+      "text": "Let's look at the hero banner together on Nov 10 at 3pm",
+      "expected": {
+        "kind": "meeting",
+        "day": "2026-11-10",
+        "after": "15:00"
+      },
+      "got": {
+        "kind": "none"
+      },
+      "checks": {
+        "kind": false
+      }
+    },
+    {
+      "id": "m21",
+      "text": "let's cancel tomorrow's crit, I'm feeling kinda sick",
+      "expected": {
+        "kind": "none"
+      },
+      "got": {
+        "kind": "none"
+      },
+      "checks": {
+        "kind": true
+      }
+    },
+    {
+      "id": "m22",
+      "text": "Could we have a call with the Singapore partner next Tuesday? Anytime after 2pm KL works",
+      "expected": {
+        "kind": "meeting",
+        "day": "2026-11-10",
+        "after": "14:00"
+      },
+      "got": {
+        "kind": "meeting",
+        "label": "Tue 10 Nov, after 14:00",
+        "durationMin": 30,
+        "confidence": 0.9
+      },
+      "checks": {
+        "kind": true,
+        "day": true,
+        "after": true
+      }
+    },
+    {
+      "id": "m23",
+      "text": "@jonas bitte die Landingpage bis morgen 12 Uhr live schalten, danke!",
+      "expected": {
+        "kind": "task",
+        "assignee": "jonas",
+        "due": "2026-11-05"
+      },
+      "got": {
+        "kind": "none"
+      },
+      "checks": {
+        "kind": false
+      }
+    },
+    {
+      "id": "m24",
+      "text": "Ich muss den Termin morgen um 10 leider absagen, sorry",
+      "expected": {
+        "kind": "none"
+      },
+      "got": {
+        "kind": "none"
+      },
+      "checks": {
+        "kind": true
+      }
+    },
+    {
+      "id": "m25",
+      "text": "Jonas, lass uns morgen früh kurz telefonieren wegen der Newsletter-Freigabe",
+      "expected": {
+        "kind": "meeting",
+        "day": "2026-11-05"
+      },
+      "got": {
+        "kind": "meeting",
+        "label": "Thu 5 Nov, in the morning",
+        "durationMin": 15,
+        "confidence": 0.9
+      },
+      "checks": {
+        "kind": true,
+        "day": true
+      }
+    },
+    {
+      "id": "m26",
+      "text": "@maya can you share the US media list by Thursday?",
+      "expected": {
+        "kind": "task",
+        "assignee": "maya",
+        "due": "2026-11-05"
+      },
+      "got": {
+        "kind": "task",
+        "assignee": "maya",
+        "due": "2026-11-05",
+        "confidence": 0.85
+      },
+      "checks": {
+        "kind": true,
+        "assignee": true,
+        "due": true
+      }
+    },
+    {
+      "id": "m27",
+      "text": "Can we push Thursday's sync to next week? Too much going on rn",
+      "expected": {
+        "kind": "none"
+      },
+      "got": {
+        "kind": "meeting",
+        "label": "Thu 5 Nov – Fri 13 Nov",
+        "durationMin": 30,
+        "confidence": 0.9
+      },
+      "checks": {
+        "kind": false
+      }
+    },
+    {
+      "id": "m28",
+      "text": "Are you free for a 20 min call next week? Monday or Tuesday, after 10am my time",
+      "expected": {
+        "kind": "meeting",
+        "day": "2026-11-09",
+        "after": "10:00",
+        "durationMin": 20
+      },
+      "got": {
+        "kind": "meeting",
+        "label": "Mon 9 Nov – Fri 13 Nov, after 10:00",
+        "durationMin": 20,
+        "confidence": 0.9
+      },
+      "checks": {
+        "kind": true,
+        "day": true,
+        "after": true,
+        "duration": true
+      }
+    },
+    {
+      "id": "m29",
+      "text": "thanks for the call earlier, very helpful!",
+      "expected": {
+        "kind": "none"
+      },
+      "got": {
+        "kind": "none"
+      },
+      "checks": {
+        "kind": true
+      }
+    },
+    {
+      "id": "m30",
+      "text": "Treffen wir uns am 12.11. um 10 Uhr für das Post-Launch Review? 1 Stunde",
+      "expected": {
+        "kind": "meeting",
+        "day": "2026-11-12",
+        "after": "10:00",
+        "durationMin": 60
+      },
+      "got": {
+        "kind": "meeting",
+        "label": "Thu 12 Nov, at 10:00",
+        "durationMin": 60,
+        "confidence": 0.75
+      },
+      "checks": {
+        "kind": true,
+        "day": true,
+        "after": true,
+        "duration": true
+      }
+    },
+    {
+      "id": "m31",
+      "text": "Arif, please double-check the MYR prices in the sheet by Friday",
+      "expected": {
+        "kind": "task",
+        "assignee": "arif",
+        "due": "2026-11-06"
+      },
+      "got": {
+        "kind": "task",
+        "assignee": "arif",
+        "due": "2026-11-06",
+        "confidence": 0.85
+      },
+      "checks": {
+        "kind": true,
+        "assignee": true,
+        "due": true
+      }
+    },
+    {
+      "id": "m32",
+      "text": "We should really talk more about the APAC roadmap sometime",
+      "expected": {
+        "kind": "none"
+      },
+      "got": {
+        "kind": "none"
+      },
+      "checks": {
+        "kind": true
+      }
+    },
+    {
+      "id": "m33",
+      "text": "can we talk tonight at 9? sorry for the late hour, its the only slot I have left",
+      "expected": {
+        "kind": "meeting",
+        "day": "2026-11-04",
+        "after": "21:00"
+      },
+      "got": {
+        "kind": "none"
+      },
+      "checks": {
+        "kind": false
+      }
+    },
+    {
+      "id": "m34",
+      "text": "can we hop on a call this afternoon to sort out the press embargo? after 1 works for me",
+      "expected": {
+        "kind": "meeting",
+        "day": "2026-11-04",
+        "after": "13:00"
+      },
+      "got": {
+        "kind": "meeting",
+        "label": "Wed 4 Nov, after 13:00",
+        "durationMin": 30,
+        "confidence": 0.9
+      },
+      "checks": {
+        "kind": true,
+        "day": true,
+        "after": true
+      }
+    },
+    {
+      "id": "m35",
+      "text": "love the new gradient, looks super clean",
+      "expected": {
+        "kind": "none"
+      },
+      "got": {
+        "kind": "none"
+      },
+      "checks": {
+        "kind": true
+      }
+    },
+    {
+      "id": "m36",
+      "text": "I'll update the style guide with the new brand colours by Monday",
+      "expected": {
+        "kind": "task",
+        "assignee": "lena",
+        "due": "2026-11-09"
+      },
+      "got": {
+        "kind": "task",
+        "assignee": "lena",
+        "due": "2026-11-09",
+        "confidence": 0.8
+      },
+      "checks": {
+        "kind": true,
+        "assignee": true,
+        "due": true
+      }
+    },
+    {
+      "id": "m37",
+      "text": "Can we sit down Friday morning for an hour and go through the onboarding screens?",
+      "expected": {
+        "kind": "meeting",
+        "day": "2026-11-06",
+        "durationMin": 60
+      },
+      "got": {
+        "kind": "none"
+      },
+      "checks": {
+        "kind": false
+      }
+    },
+    {
+      "id": "m38",
+      "text": "Contracts are signed btw, all good from our side",
+      "expected": {
+        "kind": "none"
+      },
+      "got": {
+        "kind": "none"
+      },
+      "checks": {
+        "kind": true
+      }
+    },
+    {
+      "id": "m39",
+      "text": "Habt ihr nächste Woche Mittwoch nachmittags Zeit für einen Call zur Kampagnenauswertung?",
+      "expected": {
+        "kind": "meeting",
+        "day": "2026-11-11"
+      },
+      "got": {
+        "kind": "meeting",
+        "label": "Mon 9 Nov – Fri 13 Nov, in the afternoon",
+        "durationMin": 30,
+        "confidence": 0.75
+      },
+      "checks": {
+        "kind": true,
+        "day": false
+      }
+    },
+    {
+      "id": "m40",
+      "text": "@lena kannst du dem Fotografen bis Ende der Woche Bescheid geben?",
+      "expected": {
+        "kind": "task",
+        "assignee": "lena",
+        "due": "2026-11-06"
+      },
+      "got": {
+        "kind": "none"
+      },
+      "checks": {
+        "kind": false
+      }
+    },
+    {
+      "id": "m41",
+      "text": "lol the staging server has launch fever too",
+      "expected": {
+        "kind": "none"
+      },
+      "got": {
+        "kind": "none"
+      },
+      "checks": {
+        "kind": true
+      }
+    },
+    {
+      "id": "m42",
+      "text": "Lena, would Thursday 4pm my time work for a sync on the reseller deck?",
+      "expected": {
+        "kind": "meeting",
+        "day": "2026-11-05",
+        "after": "16:00"
+      },
+      "got": {
+        "kind": "meeting",
+        "label": "Thu 5 Nov, at 16:00",
+        "durationMin": 30,
+        "confidence": 0.75
+      },
+      "checks": {
+        "kind": true,
+        "day": true,
+        "after": true
+      }
+    },
+    {
+      "id": "m43",
+      "text": "Ich hab das Budget-Sheet gestern aktualisiert, die Zahlen passen jetzt",
+      "expected": {
+        "kind": "none"
+      },
+      "got": {
+        "kind": "none"
+      },
+      "checks": {
+        "kind": true
+      }
+    },
+    {
+      "id": "m44",
+      "text": "Wollen wir morgen nach 15 Uhr nochmal über die FAQ sprechen? 15 min reichen",
+      "expected": {
+        "kind": "meeting",
+        "day": "2026-11-05",
+        "after": "15:00",
+        "durationMin": 15
+      },
+      "got": {
+        "kind": "none"
+      },
+      "checks": {
+        "kind": false
+      }
+    },
+    {
+      "id": "m45",
+      "text": "I'll draft the press release and share it tomorow morning",
+      "expected": {
+        "kind": "task",
+        "assignee": "maya",
+        "due": "2026-11-05"
+      },
+      "got": {
+        "kind": "task",
+        "assignee": "maya",
+        "due": null,
+        "confidence": 0.65
+      },
+      "checks": {
+        "kind": true,
+        "assignee": true,
+        "due": false
+      }
+    },
+    {
+      "id": "m46",
+      "text": "Hi Arif, how's KL? Heard it's been raining nonstop",
+      "expected": {
+        "kind": "none"
+      },
+      "got": {
+        "kind": "none"
+      },
+      "checks": {
+        "kind": true
+      }
+    },
+    {
+      "id": "m47",
+      "text": "Let's do a design crit Nov 12, 11am? 45 minutes",
+      "expected": {
+        "kind": "meeting",
+        "day": "2026-11-12",
+        "after": "11:00",
+        "durationMin": 45
+      },
+      "got": {
+        "kind": "none"
+      },
+      "checks": {
+        "kind": false
+      }
+    },
+    {
+      "id": "m48",
+      "text": "@arif thanks for sending the venue contract so fast!",
+      "expected": {
+        "kind": "none"
+      },
+      "got": {
+        "kind": "none"
+      },
+      "checks": {
+        "kind": true
+      }
+    },
+    {
+      "id": "m49",
+      "text": "Can we do a dry run of the launch demo tomorrow? I'm free from 3pm",
+      "expected": {
+        "kind": "meeting",
+        "day": "2026-11-05",
+        "after": "15:00"
+      },
+      "got": {
+        "kind": "meeting",
+        "label": "Thu 5 Nov, after 15:00",
+        "durationMin": 30,
+        "confidence": 0.9
+      },
+      "checks": {
+        "kind": true,
+        "day": true,
+        "after": true
+      }
+    },
+    {
+      "id": "m50",
+      "text": "I'll get the reseller contracts signed by Nov 10",
+      "expected": {
+        "kind": "task",
+        "assignee": "arif",
+        "due": "2026-11-10"
+      },
+      "got": {
+        "kind": "none"
+      },
+      "checks": {
+        "kind": false
+      }
+    },
+    {
+      "id": "m51",
+      "text": "Is our Friday review still at 4pm or did we move it?",
+      "expected": {
+        "kind": "none"
+      },
+      "got": {
+        "kind": "none"
+      },
+      "checks": {
+        "kind": true
+      }
+    },
+    {
+      "id": "m52",
+      "text": "Können wir uns übermorgen um halb zehn zusammensetzen? Dauert max. 30 Minuten",
+      "expected": {
+        "kind": "meeting",
+        "day": "2026-11-06",
+        "after": "09:30",
+        "durationMin": 30
+      },
+      "got": {
+        "kind": "meeting",
+        "label": "the next few working days",
+        "durationMin": 30,
+        "confidence": 0.75
+      },
+      "checks": {
+        "kind": true,
+        "day": false,
+        "after": false,
+        "duration": true
+      }
+    },
+    {
+      "id": "m53",
+      "text": "Ich schreib heute Nachmittag die FAQ fertig und schick sie rum",
+      "expected": {
+        "kind": "task",
+        "assignee": "lena",
+        "due": "2026-11-04"
+      },
+      "got": {
+        "kind": "none"
+      },
+      "checks": {
+        "kind": false
+      }
+    },
+    {
+      "id": "m54",
+      "text": "Wir sollten irgendwann mal ein richtiges Offsite machen",
+      "expected": {
+        "kind": "none"
+      },
+      "got": {
+        "kind": "none"
+      },
+      "checks": {
+        "kind": true
+      }
+    },
+    {
+      "id": "m55",
+      "text": "Shall we call on Monday at 8:00 my time? That's afternoon for you",
+      "expected": {
+        "kind": "meeting",
+        "day": "2026-11-09",
+        "after": "08:00"
+      },
+      "got": {
+        "kind": "meeting",
+        "label": "Mon 9 Nov, at 08:00",
+        "durationMin": 30,
+        "confidence": 0.9
+      },
+      "checks": {
+        "kind": true,
+        "day": true,
+        "after": true
+      }
+    },
+    {
+      "id": "m56",
+      "text": "@lena can you add the KL office address to the launch email footer?",
+      "expected": {
+        "kind": "task",
+        "assignee": "lena"
+      },
+      "got": {
+        "kind": "task",
+        "assignee": "lena",
+        "due": null,
+        "confidence": 0.7
+      },
+      "checks": {
+        "kind": true,
+        "assignee": true
+      }
+    },
+    {
+      "id": "m57",
+      "text": "Guten Morgen! Die neue Version ist auf Staging, sieht gut aus.",
+      "expected": {
+        "kind": "none"
+      },
+      "got": {
+        "kind": "none"
+      },
+      "checks": {
+        "kind": true
+      }
+    },
+    {
+      "id": "m58",
+      "text": "Jonas, can we talk next week about the post-launch budget? any day works for me",
+      "expected": {
+        "kind": "meeting",
+        "day": "2026-11-09"
+      },
+      "got": {
+        "kind": "none"
+      },
+      "checks": {
+        "kind": false
+      }
+    },
+    {
+      "id": "m59",
+      "text": "Lena can you export the icons as SVG and drop them in Figma? no rush",
+      "expected": {
+        "kind": "task",
+        "assignee": "lena"
+      },
+      "got": {
+        "kind": "none"
+      },
+      "checks": {
+        "kind": false
+      }
+    },
+    {
+      "id": "m60",
+      "text": "Maya, before you log off today could we do a call at 5pm my time? 15 min",
+      "expected": {
+        "kind": "meeting",
+        "day": "2026-11-04",
+        "after": "17:00",
+        "durationMin": 15
+      },
+      "got": {
+        "kind": "meeting",
+        "label": "Wed 4 Nov, at 17:00",
+        "durationMin": 15,
+        "confidence": 0.9
+      },
+      "checks": {
+        "kind": true,
+        "day": true,
+        "after": true,
+        "duration": true
+      }
+    }
+  ]
+}

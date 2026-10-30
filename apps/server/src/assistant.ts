@@ -318,7 +318,7 @@ export class Assistant {
     const writer = new SuggestionWriter(r.doc, { id: randomUUID(), author: assistant.id }, anchor);
     const context =
       task.fromChannel && inChannel(peer.user, task.fromChannel)
-        ? this.chat.context(task.fromChannel, 30, (id) => person(id).name)
+        ? this.chat.context(task.fromChannel, 30, (id) => person(id).name, true)
         : [];
     const presence = (status: string) => {
       const caret = writer.caret();

@@ -1,0 +1,44 @@
+name: ci
+on:
+  push:
+  pull_request:
+
+jobs:
+  checks:
+    name: lint, types, unit, property and chaos tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: scripts/ci-run.sh "biome" npx biome check .
+      - run: scripts/ci-run.sh "types" npm run typecheck
+      - run: scripts/ci-run.sh "vitest" npx vitest run
+      - name: blind first runs are never rewritten
+        run: scripts/ci-run.sh "heldout" bash -c 'for d in heldout/*/; do s=$(basename $d); [ -f heldout/$s/messages.json ] && npm run heldout -- $s >/dev/null; done; git diff --exit-code -- reports/heldout'
+
+  e2e:
+    name: end to end, accessibility and performance budgets
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+        working-directory: apps/web
+      - run: scripts/ci-run.sh "next build" npm -w @anw/web run build
+      - run: scripts/ci-run.sh "playwright" npm -w @anw/web run e2e
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: perf-and-traces
+          path: |
+            reports/perf.json
+            apps/web/test-results
+          if-no-files-found: ignore

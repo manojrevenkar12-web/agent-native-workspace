@@ -115,8 +115,11 @@
 .event[data-short] {
   display: flex;
   align-items: center;
-  gap: var(--s-2);
+  gap: var(--s-1);
   padding-block: 0;
+}
+.event[data-short] span {
+  flex: none;
 }
 .event[data-mine] {
   background: var(--paper);

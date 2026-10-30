@@ -20,6 +20,8 @@ export const layout = {
   dayStartHour: 7,
   dayEndHour: 21,
   snapMinutes: 15,
+  /** Shorter events show title and start time on one line. */
+  compactEventMinutes: 45,
 };
 
 export const timing = {

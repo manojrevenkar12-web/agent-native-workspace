@@ -294,7 +294,7 @@ export function CalendarView() {
                           transition={{ duration: motion.fast }}
                           className={s.event}
                           data-mine={mine || undefined}
-                          data-short={bottom - top < 30 || undefined}
+                          data-short={bottom - top < layout.compactEventMinutes || undefined}
                           data-selected={selected === e.id || undefined}
                           style={{
                             top: Math.max(0, top) * PX_PER_MIN + (p ? p.minutes * PX_PER_MIN : 0),
@@ -311,7 +311,8 @@ export function CalendarView() {
                         >
                           <strong>{e.title}</strong>
                           <span>
-                            {clock(e.start, tz)}–{clock(e.end, tz)}
+                            {clock(e.start, tz)}
+                            {bottom - top < layout.compactEventMinutes ? "" : `–${clock(e.end, tz)}`}
                           </span>
                         </m.button>
                       );
