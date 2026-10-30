@@ -1,0 +1,210 @@
+/*
+ * Design tokens. Every colour, size and duration in the app comes from here (CSS) or from
+ * shared/theme/tokens.ts (the same values for motion in JS). No magic numbers in components.
+ *
+ * The palette is celadon paper and dark ink. People's text is ink; the assistant's work is
+ * verdigris, a colour nothing else uses, so its suggestions are recognisable at a glance.
+ * Amber means "this needs your decision". Contrast: ink and ink-soft pass AAA on paper,
+ * verdigris and amber pass AA for text.
+ */
+:root {
+  --paper: #f2f4f1;
+  --surface: #fbfcfa;
+  --surface-sunk: #e8ece8;
+  --ink: #16201c;
+  --ink-soft: #46544e;
+  --ink-faint: #58665f;
+  --rule: #d3dad5;
+  --rule-strong: #b7c2bc;
+  --agent: #0d6b60;
+  --agent-wash: #d5ece6;
+  --agent-wash-strong: #b4ddd3;
+  --decide: #8f5400;
+  --decide-wash: #f6e8cf;
+  --danger: #b42318;
+  --danger-wash: #fbe4e1;
+  --ok: #1f6f3a;
+  --focus: #1f5fd1;
+  --shadow: 0 1px 0 rgb(22 32 28 / 0.06), 0 8px 24px -12px rgb(22 32 28 / 0.18);
+
+  --font-ui: "Instrument Sans Variable", "Instrument Sans", system-ui, sans-serif;
+  --font-doc: "Newsreader Variable", "Newsreader", Georgia, serif;
+
+  /* Type scale: minor third from 15px. */
+  --text-xs: 0.78125rem;
+  --text-sm: 0.875rem;
+  --text-md: 0.9375rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.35rem;
+  --text-2xl: 1.625rem;
+  --text-3xl: 2.25rem;
+  --leading-tight: 1.2;
+  --leading-ui: 1.45;
+  --leading-doc: 1.62;
+  --measure: 68ch;
+
+  /* Space: 4px steps. */
+  --s-1: 0.25rem;
+  --s-2: 0.5rem;
+  --s-3: 0.75rem;
+  --s-4: 1rem;
+  --s-5: 1.25rem;
+  --s-6: 1.5rem;
+  --s-8: 2rem;
+  --s-10: 2.5rem;
+  --s-12: 3rem;
+  --s-16: 4rem;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+  --radius-pill: 999px;
+
+  --rail-width: 5.5rem;
+  --list-width: 16rem;
+  --header-height: 3.5rem;
+  --row-height: 1.75rem;
+  --col-width: 8.5rem;
+  --rowhead-width: 3.25rem;
+  --hour-height: 3rem;
+
+  --dur-fast: 120ms;
+  --dur-med: 220ms;
+  --dur-slow: 480ms;
+  --ease-out: cubic-bezier(0.2, 0.7, 0.2, 1);
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #111715;
+    --surface: #171f1c;
+    --surface-sunk: #0d1311;
+    --ink: #e3eae6;
+    --ink-soft: #a5b4ad;
+    --ink-faint: #7f8f88;
+    --rule: #28332f;
+    --rule-strong: #3a4742;
+    --agent: #63c7b6;
+    --agent-wash: #143a33;
+    --agent-wash-strong: #1c5148;
+    --decide: #e8ad54;
+    --decide-wash: #3a2b12;
+    --danger: #f97066;
+    --danger-wash: #3d1714;
+    --ok: #6fcf8f;
+    --focus: #7aa7ff;
+    --shadow: 0 1px 0 rgb(0 0 0 / 0.3), 0 10px 30px -14px rgb(0 0 0 / 0.6);
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --paper: #111715;
+  --surface: #171f1c;
+  --surface-sunk: #0d1311;
+  --ink: #e3eae6;
+  --ink-soft: #a5b4ad;
+  --ink-faint: #7f8f88;
+  --rule: #28332f;
+  --rule-strong: #3a4742;
+  --agent: #63c7b6;
+  --agent-wash: #143a33;
+  --agent-wash-strong: #1c5148;
+  --decide: #e8ad54;
+  --decide-wash: #3a2b12;
+  --danger: #f97066;
+  --danger-wash: #3d1714;
+  --ok: #6fcf8f;
+  --focus: #7aa7ff;
+  --shadow: 0 1px 0 rgb(0 0 0 / 0.3), 0 10px 30px -14px rgb(0 0 0 / 0.6);
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-ui);
+  font-size: var(--text-md);
+  line-height: var(--leading-ui);
+  font-feature-settings: "ss01", "cv11";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: var(--agent-wash-strong);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--s-2);
+  top: -10rem;
+  z-index: 100;
+  background: var(--ink);
+  color: var(--paper);
+  padding: var(--s-2) var(--s-3);
+  border-radius: var(--radius-md);
+}
+
+.skip-link:focus {
+  top: var(--s-2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    /* biome-ignore lint/complexity/noImportantStyles: reduced motion must win over every component */
+    animation-duration: 1ms !important;
+    /* biome-ignore lint/complexity/noImportantStyles: as above */
+    transition-duration: 1ms !important;
+  }
+}

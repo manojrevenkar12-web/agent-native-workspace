@@ -55,6 +55,8 @@ export class Connection {
   private readonly opts: Required<Omit<ConnectionOptions, "socket">> & { socket: SocketFactory };
   private stopped = false;
   private readonly onOnline = () => this.reconnectNow();
+  /** The browser knows before a heartbeat would: drop now and show offline at once. */
+  private readonly onOffline = () => this.drop();
 
   constructor(opts: ConnectionOptions) {
     this.opts = {
@@ -95,7 +97,10 @@ export class Connection {
 
   connect(): void {
     this.stopped = false;
-    if (typeof window !== "undefined") window.addEventListener("online", this.onOnline);
+    if (typeof window !== "undefined") {
+      window.addEventListener("online", this.onOnline);
+      window.addEventListener("offline", this.onOffline);
+    }
     void this.open();
   }
 
@@ -113,7 +118,10 @@ export class Connection {
 
   close(): void {
     this.stopped = true;
-    if (typeof window !== "undefined") window.removeEventListener("online", this.onOnline);
+    if (typeof window !== "undefined") {
+      window.removeEventListener("online", this.onOnline);
+      window.removeEventListener("offline", this.onOffline);
+    }
     if (this.timer) clearTimeout(this.timer);
     if (this.beat) clearInterval(this.beat);
     this.ws?.close(1000, "closed");
@@ -189,6 +197,11 @@ export class Connection {
 
   private schedule() {
     if (this.stopped || this.timer) return;
+    // The browser says there is no network: wait for its "online" event instead of retrying.
+    if (typeof navigator !== "undefined" && navigator.onLine === false) {
+      this.setStatus("offline");
+      return;
+    }
     const delay = backoff(this.attempt++, this.opts.reconnect, this.opts.random);
     this.timer = setTimeout(() => {
       this.timer = null;

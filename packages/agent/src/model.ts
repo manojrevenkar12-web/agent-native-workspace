@@ -97,6 +97,8 @@ function firstClause(s: string): string {
 }
 
 function draftText(req: Extract<ModelRequest, { kind: "draft" }>): string {
+  const long = manyParagraphs(req.instruction);
+  if (long) return long;
   const lines = req.context.filter((l) => l.trim());
   if (lines.length) {
     const speakers = [...new Set(lines.map((l) => l.split(":")[0]!.trim()).filter((s) => s.length < 40))];
@@ -120,10 +122,7 @@ function draftText(req: Extract<ModelRequest, { kind: "draft" }>): string {
       out.push("## Next steps", ...asks.map((l) => `- ${l.split(":")[0]!.trim()}: ${firstClause(l)}`));
     return `${out.join("\n")}\n`;
   }
-  const subject =
-    req.instruction
-      .replace(/^(write|draft|add|create|schreib\w*|erstell\w*)\s+(an?|the|ein\w*)?\s*/i, "")
-      .trim() || "this section";
+  const subject = topicOf(req.instruction);
   const title = subject.charAt(0).toUpperCase() + subject.slice(1);
   return [
     `## ${title}`,
@@ -134,6 +133,28 @@ function draftText(req: Extract<ModelRequest, { kind: "draft" }>): string {
     `Open question: who owns ${subject} after launch? Leave a comment with a name and a date.`,
     "",
   ].join("\n");
+}
+
+function topicOf(instruction: string): string {
+  return (
+    instruction
+      .replace(/^(write|draft|add|create|schreib\w*|erstell\w*)\s+(an?|the|ein\w*)?\s*/i, "")
+      .trim() || "this section"
+  );
+}
+
+/** "Write 40 paragraphs about the launch": a long, steady stream, used by the performance tests. */
+function manyParagraphs(instruction: string): string | null {
+  const many = /\b(\d{1,3})\s+paragraphs?\b/i.exec(instruction);
+  if (!many) return null;
+  const n = Math.min(200, Number(many[1]));
+  const topic = instruction.replace(/^.*?\bparagraphs?\s*(?:about|on)?\s*/i, "").trim() || "the plan";
+  const out = [`## ${topic.charAt(0).toUpperCase()}${topic.slice(1)}`];
+  for (let i = 1; i <= n; i++)
+    out.push(
+      `Point ${i}: what changes for people using ${topic}, what we measure in the first week, and who decides if the numbers disagree with the plan.`,
+    );
+  return `${out.join("\n")}\n`;
 }
 
 function replyText(req: Extract<ModelRequest, { kind: "reply" }>): string {

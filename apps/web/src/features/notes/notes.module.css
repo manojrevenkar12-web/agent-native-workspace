@@ -1,0 +1,125 @@
+.layout {
+  display: grid;
+  grid-template-columns: var(--list-width) minmax(0, 1fr);
+  height: 100%;
+  min-height: 0;
+}
+.list {
+  border-right: 1px solid var(--rule);
+  padding: var(--s-4) var(--s-3);
+  overflow: auto;
+}
+.listHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 var(--s-2) var(--s-3);
+}
+.listHead h2 {
+  margin: 0;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+.list ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 2px;
+}
+.list button {
+  width: 100%;
+  text-align: left;
+  padding: var(--s-2) var(--s-3);
+  border: 0;
+  border-radius: var(--radius-md);
+  background: none;
+  color: var(--ink-soft);
+  font-weight: 540;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.list button:hover {
+  background: var(--surface-sunk);
+  color: var(--ink);
+}
+.list button[aria-current="page"] {
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1px var(--rule);
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
+}
+.body {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 17rem;
+}
+.paper {
+  overflow-y: auto;
+  background: var(--surface);
+}
+.chips {
+  padding: var(--s-5) var(--s-4);
+  border-left: 1px solid var(--rule);
+  display: grid;
+  align-content: start;
+  gap: var(--s-3);
+}
+.chip {
+  display: grid;
+  gap: var(--s-2);
+  padding: var(--s-3);
+  border-radius: var(--radius-md);
+  background: var(--agent-wash);
+}
+.chipWhen {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-1);
+  color: var(--agent);
+  font-weight: 640;
+  font-size: var(--text-sm);
+}
+.chipLine {
+  font-family: var(--font-doc);
+}
+.done {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-1);
+  font-size: var(--text-sm);
+  color: var(--ok);
+}
+.muted {
+  margin: 0 var(--s-2);
+  font-size: var(--text-sm);
+  color: var(--ink-soft);
+}
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .list {
+    display: none;
+  }
+  .body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .chips {
+    border-left: 0;
+    border-top: 1px solid var(--rule);
+  }
+}
+.hint {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--ink-soft);
+}

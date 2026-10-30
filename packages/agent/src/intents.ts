@@ -306,22 +306,29 @@ function mentioned(text: string, ctx: IntentContext): string[] {
   return out;
 }
 
+const TOPIC_CUE = /^(about|on|re:?|regarding|for|zu|zum|zur|wegen|über|ueber|bzgl\.?|bezüglich)$/i;
+const TOPIC_SKIP = /^(the|our|unser\w*|den|die|das|dem|a|an)$/i;
+const TOPIC_STOP =
+  /^(today|tomorrow|next|this|on|at|after|before|between|by|in|morning|afternoon|evening|monday|tuesday|wednesday|thursday|friday|mon|tue|wed|thu|fri|heute|morgen|nächste|nächsten|diese|am|um|ab|nach|vor|bis|montag|dienstag|mittwoch|donnerstag|freitag|for|für|with|mit|and|und|\d.*)$/i;
+
+/** "a call on Wednesday about onboarding": the first cue names a day, the second the topic. */
 function topic(text: string): string | null {
-  const m =
-    /\b(?:about|on|re:?|regarding|for|zu|zum|zur|wegen|über|ueber|bzgl\.?|bezüglich)\s+(?:the |our |unser\w* |den |die |das |dem )?([\p{L}\d][\p{L}\d&/\- ]{2,40})/iu.exec(
-      text,
-    );
-  if (!m) return null;
-  const stop =
-    /^(today|tomorrow|next|this|on|at|after|before|between|by|morning|afternoon|monday|tuesday|wednesday|thursday|friday|heute|morgen|nächste|diese|am|um|ab|nach|vor|bis|montag|dienstag|mittwoch|donnerstag|freitag|for|für|with|mit|\d.*)$/i;
-  const words = m[1]!.split(/\s+/);
-  const kept: string[] = [];
-  for (const w of words) {
-    if (stop.test(w.replace(/[?!.,;:]+$/, "")) || kept.length >= 5) break;
-    kept.push(w.replace(/[?!.,;:]+$/, ""));
+  const raw = text.split(/\s+/);
+  const words = raw.map((w) => w.replace(/[?!.,;:()"“”]+$/g, "").replace(/^[("“]+/, ""));
+  for (let i = 0; i < words.length; i++) {
+    if (!TOPIC_CUE.test(words[i]!)) continue;
+    let j = i + 1;
+    while (j < words.length && TOPIC_SKIP.test(words[j]!)) j++;
+    const kept: string[] = [];
+    for (; j < words.length && kept.length < 5; j++) {
+      if (TOPIC_STOP.test(words[j]!) || !/[\p{L}\d]/u.test(words[j]!)) break;
+      kept.push(words[j]!);
+      if (/[?!.;]$/.test(raw[j]!)) break; // the sentence ends here
+    }
+    const t = kept.join(" ");
+    if (t.length >= 3) return t.charAt(0).toUpperCase() + t.slice(1);
   }
-  const t = kept.join(" ").trim();
-  return t.length >= 3 ? t.charAt(0).toUpperCase() + t.slice(1) : null;
+  return null;
 }
 
 function describe(dates: Temporal.PlainDate[], said: boolean, tod: TimeOfDay): string {

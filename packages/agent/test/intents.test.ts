@@ -82,6 +82,10 @@ describe("meetings in English and German", () => {
     expect(local(meeting("Can we meet Nov 12th at 10:30?").windows[0]!.start)).toBe("2026-11-12T10:30");
   });
 
+  it("finds the topic after a day named with 'on'", () => {
+    expect(meeting("Can we have a call on Wednesday after 3pm about onboarding?").title).toBe("Onboarding");
+  });
+
   it("invites only the people mentioned, plus the writer", () => {
     expect(meeting("@arif can we do a call tomorrow afternoon?").attendees.sort()).toEqual(["arif", "lena"]);
   });

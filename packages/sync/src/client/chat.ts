@@ -30,6 +30,7 @@ export interface ChatSnapshot {
   reads: Readonly<Record<string, number>>;
 }
 
+const TYPING_MS = 4000;
 let counter = 0;
 const newId = () =>
   `${Date.now().toString(36)}-${(counter++).toString(36)}-${Math.random().toString(36).slice(2, 8)}`;
@@ -106,8 +107,10 @@ export class ChatChannel {
       }),
       conn.on("chat.typing", (f) => {
         if (f.channel !== channel || f.user === this.owner) return;
-        this.typingUntil.set(f.user, this.now() + 4000);
+        this.typingUntil.set(f.user, this.now() + TYPING_MS);
         this.emit();
+        // Re-render when the indicator should disappear.
+        setTimeout(() => this.emit(), TYPING_MS + 50);
       }),
       conn.on("chat.read", (f) => {
         if (f.channel !== channel) return;
@@ -127,7 +130,8 @@ export class ChatChannel {
   send(body: string, replyTo?: string): string {
     const p: Pending = { clientMsgId: newId(), body, createdAt: this.now() };
     if (replyTo) p.replyTo = replyTo;
-    this.outbox.push(p);
+    // Replace, never mutate: the snapshot hands this array to React, which compares by identity.
+    this.outbox = [...this.outbox, p];
     this.saveOutbox();
     this.conn.send({ t: "chat.send", channel: this.channel, ...p });
     this.emit();

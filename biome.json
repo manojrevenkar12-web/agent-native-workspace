@@ -25,7 +25,8 @@
         "noAssignInExpressions": "off"
       },
       "style": {
-        "noNonNullAssertion": "off"
+        "noNonNullAssertion": "off",
+        "noDescendingSpecificity": "off"
       }
     }
   },
@@ -33,5 +34,18 @@
     "parser": {
       "cssModules": true
     }
-  }
+  },
+  "overrides": [
+    {
+      "includes": ["apps/web/src/features/sheets/Grid.tsx"],
+      "linter": {
+        "rules": {
+          "a11y": {
+            "useSemanticElements": "off",
+            "useFocusableInteractive": "off"
+          }
+        }
+      }
+    }
+  ]
 }

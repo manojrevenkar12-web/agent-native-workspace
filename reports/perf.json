@@ -1,0 +1,31 @@
+{
+  "measuredOn": "Intel(R) Xeon(R) Processor @ 2.10GHz × 2, headless Chromium",
+  "budgets": {
+    "typingWhileStreaming": {
+      "tokens": 1200,
+      "baselineKeystrokes": 60,
+      "keystrokes": 120,
+      "inputDelayP95Ms": 50,
+      "maxSlowdownMs": 32,
+      "longTaskTotalMs": 600
+    },
+    "gridScroll": {
+      "rows": 100000,
+      "scrollSteps": 90,
+      "pixelsPerFrame": 600,
+      "frameP95Ms": 34
+    }
+  },
+  "results": {
+    "gridScroll": {
+      "frameP95Ms": 24.7,
+      "loadAndComputeMs": 7621
+    },
+    "typingWhileStreaming": {
+      "quietP95Ms": 48,
+      "streamingP95Ms": 64,
+      "keyEventsMeasured": 599,
+      "longTaskTotalMs": 0
+    }
+  }
+}

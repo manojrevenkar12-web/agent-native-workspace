@@ -125,7 +125,18 @@ export class Assistant {
     });
     if (!intent || intent.confidence < config.agent.proactive.minConfidence) return;
     if (intent.kind === "meeting") {
-      const slots = this.slots(intent.attendees, intent.windows, intent.durationMin);
+      let slots = this.slots(intent.attendees, intent.windows, intent.durationMin);
+      let moved = 0;
+      // Nothing fits (a weekend, a full day): look at the following days at the same time of day.
+      for (let k = 1; slots.length === 0 && k <= 7; k++) {
+        const shift = (iso: string) => new Date(Date.parse(iso) + k * 86_400_000).toISOString();
+        slots = this.slots(
+          intent.attendees,
+          intent.windows.map((w) => ({ start: shift(w.start), end: shift(w.end) })),
+          intent.durationMin,
+        );
+        moved = k;
+      }
       const proposal: MeetingProposal = {
         kind: "meeting",
         id: randomUUID(),
@@ -140,10 +151,12 @@ export class Assistant {
       const who = listNames(intent.attendees);
       let body: string;
       if (slots.length === 0) {
-        body = `No time works for ${who} ${intent.label}.`;
+        body = `No time works for ${who} ${intent.label}, or in the week after.`;
         proposal.note = "Try a wider window, or ask me again with another day.";
       } else if (slots.some((s) => s.missing?.length)) {
-        body = `${who} share no working hours ${intent.label}. These times leave one person out:`;
+        body = `${who} share no working hours ${moved ? "then" : intent.label}. These times leave one person out:`;
+      } else if (moved) {
+        body = `Nothing works for ${who} ${intent.label}. The next times that do:`;
       } else {
         body = `Times that work for ${who}, ${intent.label}:`;
       }
@@ -240,7 +253,9 @@ export class Assistant {
     };
     const cal = this.calendar();
     cal.doc.transact(() => cal.events.set(event.id, event), "proposal");
-    this.chat.change(msg, { proposal: { ...p, status: "booked", eventId: event.id, decidedBy: peer.user } });
+    this.chat.change(msg, {
+      proposal: { ...p, slots: [slot], status: "booked", eventId: event.id, decidedBy: peer.user },
+    });
   }
 
   cancel(peer: Peer, runId: string): void {

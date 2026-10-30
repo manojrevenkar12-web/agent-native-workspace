@@ -100,7 +100,12 @@ export async function startServer(opts: ServerOptions): Promise<RunningServer> {
     http.listening ? resolve() : http.once("listening", () => resolve()),
   );
   const port = (http.address() as AddressInfo).port;
-  const wss = new WebSocketServer({ noServer: true, maxPayload: config.sync.maxMessageBytes });
+  const wss = new WebSocketServer({
+    noServer: true,
+    maxPayload: config.sync.maxMessageBytes,
+    // Yjs updates in base64 JSON compress well; a 100k-row sheet syncs at a fraction of its size.
+    perMessageDeflate: { threshold: 1024 },
+  });
   const sockets = new Set<WebSocket>();
 
   http.on("upgrade", (req, socket, head) => {
