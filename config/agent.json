@@ -1,0 +1,8 @@
+{
+  "model": { "provider": "simulated", "claudeModel": "claude-sonnet-5-5", "maxTokens": 900 },
+  "simulated": { "tokensPerSecond": 60, "firstTokenMs": 350 },
+  "stream": { "flushEveryMs": 50, "maxCharsPerFlush": 240 },
+  "chat": { "flushEveryMs": 40 },
+  "proactive": { "minConfidence": 0.6, "maxSlotsOffered": 3 },
+  "sheets": { "rowsPerFlush": 4 }
+}

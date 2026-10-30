@@ -1,0 +1,45 @@
+{
+  "name": "@anw/web",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "next dev -p 3417",
+    "build": "next build",
+    "start": "next start -p 3417",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "e2e": "playwright test"
+  },
+  "dependencies": {
+    "@anw/agent": "*",
+    "@anw/sheets": "*",
+    "@anw/sync": "*",
+    "@fontsource-variable/instrument-sans": "5.3.0",
+    "@fontsource-variable/newsreader": "5.3.0",
+    "@tanstack/react-virtual": "3.14.24",
+    "@tiptap/core": "3.32.1",
+    "@tiptap/extension-collaboration": "3.32.1",
+    "@tiptap/extension-collaboration-caret": "3.32.1",
+    "@tiptap/pm": "3.32.1",
+    "@tiptap/react": "3.32.1",
+    "@tiptap/starter-kit": "3.32.1",
+    "@tiptap/y-tiptap": "3.0.11",
+    "motion": "14.8.0",
+    "next": "16.4.3",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "yjs": "13.6.33",
+    "y-protocols": "1.0.7"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.14.0",
+    "@playwright/test": "1.56.0",
+    "@testing-library/react": "16.3.3",
+    "@testing-library/user-event": "14.6.8",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "@vitejs/plugin-react": "6.1.2",
+    "babel-plugin-react-compiler": "1.0.0",
+    "jsdom": "30.1.3"
+  }
+}

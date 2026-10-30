@@ -1,0 +1,26 @@
+{
+  "name": "agent-native-workspace",
+  "private": true,
+  "type": "module",
+  "workspaces": ["packages/*", "apps/*"],
+  "engines": { "node": ">=22.18" },
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "server": "npm -w @anw/server run start",
+    "typecheck": "tsc -p tsconfig.json --noEmit && npm -w @anw/web run typecheck",
+    "lint": "biome check .",
+    "format": "biome format --write .",
+    "test": "vitest run",
+    "e2e": "npm -w @anw/web run e2e",
+    "heldout": "tsx scripts/heldout.ts",
+    "check": "npm run lint && npm run typecheck && npm test"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.6.4",
+    "@types/node": "26.6.6",
+    "fast-check": "4.10.2",
+    "tsx": "4.23.15",
+    "typescript": "7.0.2",
+    "vitest": "5.0.5"
+  }
+}

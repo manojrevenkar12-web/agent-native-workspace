@@ -1,0 +1,5 @@
+{
+  "typingWhileStreaming": { "tokens": 1200, "keystrokes": 120, "inputDelayP95Ms": 50, "longTaskTotalMs": 600 },
+  "gridScroll": { "rows": 100000, "scrollSteps": 60, "frameP95Ms": 34 },
+  "chatBurst": { "messages": 500, "renderP95Ms": 34 }
+}

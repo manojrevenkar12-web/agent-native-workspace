@@ -1,0 +1,152 @@
+{
+  "people": [
+    {
+      "id": "lena",
+      "name": "Lena Hoffmann",
+      "timeZone": "Europe/Berlin",
+      "color": "#2F6FDE"
+    },
+    {
+      "id": "arif",
+      "name": "Arif Rahman",
+      "timeZone": "Asia/Kuala_Lumpur",
+      "color": "#C2410C"
+    },
+    {
+      "id": "maya",
+      "name": "Maya Okafor",
+      "timeZone": "America/New_York",
+      "color": "#9333EA"
+    },
+    {
+      "id": "jonas",
+      "name": "Jonas Weber",
+      "timeZone": "Europe/Berlin",
+      "color": "#B91C1C"
+    }
+  ],
+  "assistant": {
+    "id": "assistant",
+    "name": "Assistant",
+    "color": "#0F766E"
+  },
+  "channels": [
+    {
+      "id": "launch",
+      "name": "launch-plan",
+      "members": [
+        "lena",
+        "arif",
+        "maya",
+        "jonas"
+      ]
+    },
+    {
+      "id": "design",
+      "name": "design-review",
+      "members": [
+        "lena",
+        "maya"
+      ]
+    },
+    {
+      "id": "arif-lena",
+      "name": "Arif and Lena",
+      "members": [
+        "arif",
+        "lena"
+      ]
+    }
+  ],
+  "rooms": {
+    "doc:launch-brief": {
+      "title": "Launch brief",
+      "kind": "doc",
+      "editors": [
+        "lena",
+        "arif",
+        "maya"
+      ],
+      "viewers": [
+        "jonas"
+      ]
+    },
+    "doc:retro": {
+      "title": "Sprint retro",
+      "kind": "doc",
+      "editors": [
+        "lena",
+        "arif",
+        "maya",
+        "jonas"
+      ],
+      "viewers": []
+    },
+    "notes:lena": {
+      "title": "Lena's notes",
+      "kind": "notes",
+      "editors": [
+        "lena"
+      ],
+      "viewers": []
+    },
+    "notes:arif": {
+      "title": "Arif's notes",
+      "kind": "notes",
+      "editors": [
+        "arif"
+      ],
+      "viewers": []
+    },
+    "notes:maya": {
+      "title": "Maya's notes",
+      "kind": "notes",
+      "editors": [
+        "maya"
+      ],
+      "viewers": []
+    },
+    "notes:jonas": {
+      "title": "Jonas's notes",
+      "kind": "notes",
+      "editors": [
+        "jonas"
+      ],
+      "viewers": []
+    },
+    "calendar:team": {
+      "title": "Team calendar",
+      "kind": "calendar",
+      "editors": [
+        "lena",
+        "arif",
+        "maya",
+        "jonas"
+      ],
+      "viewers": []
+    },
+    "sheet:budget": {
+      "title": "Launch budget",
+      "kind": "sheet",
+      "editors": [
+        "lena",
+        "arif",
+        "maya"
+      ],
+      "viewers": [
+        "jonas"
+      ]
+    },
+    "sheet:ledger": {
+      "title": "Transactions (100k rows)",
+      "kind": "sheet",
+      "editors": [
+        "lena",
+        "arif",
+        "maya",
+        "jonas"
+      ],
+      "viewers": []
+    }
+  }
+}

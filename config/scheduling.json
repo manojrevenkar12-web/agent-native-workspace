@@ -1,0 +1,13 @@
+{
+  "workingHours": { "start": "09:00", "end": "18:00", "days": [1, 2, 3, 4, 5] },
+  "slotStepMinutes": 30,
+  "defaultDurationMinutes": 30,
+  "horizonDays": 10,
+  "bufferMinutes": 0,
+  "dayParts": {
+    "morning": ["09:00", "12:00"],
+    "lunch": ["12:00", "14:00"],
+    "afternoon": ["13:00", "18:00"],
+    "evening": ["17:00", "20:00"]
+  }
+}

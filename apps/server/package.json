@@ -1,0 +1,25 @@
+{
+  "name": "@anw/server",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "tsx src/main.ts"
+  },
+  "dependencies": {
+    "@anw/agent": "*",
+    "@anw/sync": "*",
+    "@hono/node-server": "2.1.5",
+    "hono": "4.13.14",
+    "ws": "8.22.0",
+    "yjs": "13.6.33",
+    "y-protocols": "1.0.7",
+    "lib0": "0.2.119",
+    "zod": "4.6.7",
+    "temporal-polyfill": "1.0.6",
+    "@anw/sheets": "*"
+  },
+  "devDependencies": {
+    "@types/ws": "8.18.2"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "heartbeatMs": 15000,
+  "staleAfterMs": 40000,
+  "reconnect": {
+    "initialMs": 250,
+    "maxMs": 8000,
+    "factor": 2,
+    "jitter": 0.3
+  },
+  "compactAfterUpdates": 200,
+  "maxMessageBytes": 2000000,
+  "chatBacklogPage": 200,
+  "outboxMaxAgeMs": 86400000,
+  "tokenTtlSeconds": 43200,
+  "allowedOrigins": [
+    "http://localhost:3417",
+    "http://127.0.0.1:3417"
+  ],
+  "slowConsumerBytes": 8000000,
+  "chatPersistEveryMs": 500,
+  "connectTimeoutMs": 8000
+}
